@@ -1,16 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Install') {
+        stage('Debug') {
             steps {
-                echo '===== Install Start ... ====='
-                bat 'python -m pip install pytest'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo '===== Test Start ... ====='
-                bat 'python -m pytest tests --junitxml=reports/junit.xml'
+                bat 'where python'
+                bat 'python --version'
             }
         }
     }
@@ -18,8 +12,6 @@ pipeline {
     post {
         always {
             echo '===== 파이프라인 종료 ====='
-            junit 'reports/junit.xml'
-
         }
         success { 
             echo '===== 성공적으로 완료됨 ====='
