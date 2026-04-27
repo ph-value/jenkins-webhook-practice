@@ -10,24 +10,11 @@ pipeline {
             }
         }
         stage('Checkout') {
+            when {
+                branch 'pipeline-test' 
+            }
             steps {
                 echo 'Check and check and check ...'
-            }
-        }
-        stage('Install') {
-            steps {
-                echo 'Installing dependencies... '
-                echo 'Loading ...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running Tests ... ... ...'
-            }
-        }
-        stage('Build'){
-            steps {
-                echo "Building application ... ... ..."
             }
         }
     }
