@@ -1,27 +1,31 @@
 pipeline {
     agent any
     stages {
-        stage('Deploy') {
+        stage('Install') {
             steps {
-                echo 'pipeline-test 브랜치에서만 실행되는 Deploy ... '
+                echo '===== Install Start ... ====='
+                bat 'python -m pip install pytest'
             }
         }
-        stage('Checkout') {
+        stage('Test') {
             steps {
-                echo 'Check and check and check ...'
+                echo '===== Test Start ... ====='
+                bat 'python -m pytest tests --junitxml=reports/junit.xml'
             }
         }
     }
     
     post {
         always {
-            echo '파이프라인 종료'
+            echo '===== 파이프라인 종료 ====='
+            junit 'reports/junit.xml'
+
         }
         success { 
-            echo '성공적으로 완료됨'
+            echo '===== 성공적으로 완료됨 ====='
         }
         failure { 
-            echo '실패 발생'
+            echo '===== 실패 발생 ====='
         }
     }
 }
