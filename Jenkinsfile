@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Debug') {
             steps {
-                bat '"%USERPROFILE%\\AppData\\Local\\Programs\\Python\\Python312\\python.exe" --version'
+                bat '"%PYTHON_EXE%" --version'
             }
         }
     }
