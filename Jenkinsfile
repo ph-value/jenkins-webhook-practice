@@ -2,17 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Deploy') {
-            when {
-                branch 'pipeline-test' 
-            }
             steps {
-                echo 'pipeline-test 브랜치에서만 실행됨'
+                echo 'pipeline-test 브랜치에서만 실행되는 Deploy ... '
             }
         }
         stage('Checkout') {
-            when {
-                branch 'pipeline-test' 
-            }
             steps {
                 echo 'Check and check and check ...'
             }
