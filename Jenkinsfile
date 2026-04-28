@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo '===== Test Start ... ====='
-                bat '"%PYTHON_EXE%" -m pytest tests --junitxml=reports/junit.xml'
+                bat '"%PYTHON_EXE%" -m pytest tests --junitxml=reports/junit.xml --html=reports/report.html'
             }
         }
     }
@@ -19,6 +19,12 @@ pipeline {
         always {
             echo '===== 파이프라인 종료 ====='
             junit 'reports/junit.xml'
+
+            publishHTML([
+                reportDir: 'reports',
+                reportFiles: 'report.html',
+                reportName: 'HTML Report'
+            ])
 
         }
         success { 
