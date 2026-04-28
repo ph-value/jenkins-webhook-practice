@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo '===== Test Start ... ====='
-                bat '"%PYTHON_EXE%" -m pytest tests --junitxml=reports/junit.xml --html=reports/report.html'
+                bat '"%PYTHON_EXE%" -m pytest tests --junitxml=reports/junit.xml --html=reports/report.html --self-contained-html'
             }
         }
     }
