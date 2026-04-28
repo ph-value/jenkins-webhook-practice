@@ -4,7 +4,7 @@ pipeline {
         stage('Install') {
             steps {
                 echo '===== Install Start ... ====='
-                bat '"%PYTHON_EXE%" -m pip install pytest'
+                bat '"%PYTHON_EXE%" -m pip install pytest pytest-html'
             }
         }
         stage('Test') {
