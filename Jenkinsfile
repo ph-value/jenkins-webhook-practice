@@ -20,7 +20,10 @@ pipeline {
             echo '===== 파이프라인 종료 ====='
             junit 'reports/junit.xml'
 
-            publishHTML([
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
                 reportDir: 'reports',
                 reportFiles: 'report.html',
                 reportName: 'HTML Report'
